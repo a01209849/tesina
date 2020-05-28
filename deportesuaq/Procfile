@@ -1,0 +1,1 @@
+web: gunicorn deportesuaq.wsgi --log-file -
