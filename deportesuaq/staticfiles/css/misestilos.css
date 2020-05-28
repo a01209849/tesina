@@ -1,0 +1,361 @@
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}
+
+body {
+  background-color: #F0FBFD !important;
+}
+
+header .navbar {
+  background-color: #3F8ED0 !important;
+}
+
+nav ul a:hover {
+    background-color: #fff !important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    color: #3F8ED0 !important;
+}
+
+.navbar-light .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: #fff !important;
+}
+
+a.nav-link {
+  height: 65px !important;
+  width: : 80px !important;
+}
+
+header .navbar .nav-link {
+  padding: inherit !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+button.btn.btn-primary {
+  color: #fff !important;
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+
+#label-font {
+  font-size: 20px !important;
+  color: #808080 !important;
+}
+
+.label-login {
+  margin-left: 15% !important;
+}
+
+.col-login {
+  border-width: medium !important;
+  border-color: #3395ff !important;
+  border-style: solid !important;
+  border-radius: 20px !important;
+}
+
+#plantilla-date{
+  height: 1.5rem !important;
+  width: 70% !important;
+}
+
+#plantilla {
+  height: 1.5rem !important;
+  width: 90% !important;
+}
+
+#plantilla-antecedentes {
+  height: 1.5rem !important;
+  width: 90% !important;
+}
+
+#plantilla-textarea {
+  height: 6rem !important;
+  width: 90% !important;
+}
+
+#plantilla-textarea-lesion {
+  height: 8rem !important;
+  width: 100% !important;
+}
+
+#row-antecedentes{
+  border-width: medium !important;
+  border-color: #3395ff !important;
+  border-style: solid !important;
+  border-radius: 20px !important;
+}
+
+#col-antecedentes{
+  margin: .5rem .5rem .5rem .5rem !important;
+}
+
+#button-antecedentes{
+  margin-left: 2% !important;
+}
+
+#choice {
+  height: 2.47rem !important;
+  width: 96% !important;
+}
+
+#choice-antecedentes {
+  height: 2.47rem !important;
+  width: 90% !important;
+}
+
+#form-row-plantilla {
+  width: 90% !important;
+}
+
+#id_end_date {
+  height: 1.5rem !important;
+  width: 90% !important;
+}
+
+#calendar-btn {
+  height: 2.5rem !important;
+  width: 7% !important;
+}
+
+#container-pacientes{
+  width: 90% !important;
+}
+
+#span-perfil {
+  margin: .3rem .3rem .3rem .3rem !important;
+  padding: inherit !important;
+}
+
+#btn-perfil {
+  margin-top: 25% !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: inherit !important;
+  border-radius: 5px !important;
+}
+
+#td-perfil{
+  background-color: #007bff !important;
+  padding: inherit !important;
+  padding-bottom: inherit !important;
+  text-align: center !important;
+}
+
+#td-estandar {
+  text-align: center !important;
+}
+
+#td-action {
+  text-align: center !important;
+  width: 10% !important;
+}
+
+#datos-perfil {
+  border-width: medium !important;
+  border-color: #3395ff !important;
+  border-style: solid !important;
+  border-radius: 20px !important;
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+.tabla{
+    margin-left: 8% !important;
+    width: 85% !important;
+    background-color: #fff !important;
+    padding: inherit !important;
+}
+
+.table-hover> tbody> tr:hover {
+  background-color: #A9D6FC !important;
+}
+
+.table .thead-light th{
+  color: #ffffff;
+  background-color: #3992DA !important;
+}
+
+#tabla-usuarios {
+    width: 90% !important;
+}
+
+#lesion-header-datos {
+  background-color: #3395ff !important;
+}
+
+#label-font-lesion {
+  font-size: 20px !important;
+  color: #fff !important;
+}
+
+#datos-perfil-lesion {
+  border-width: medium !important;
+  border-color: #3395ff !important;
+  border-style: solid !important;
+  border-radius: 20px !important;
+  background-color: #fff !important;
+  color: #000 !important;
+  padding: inherit !important;
+}
+
+#lesion-header-datos-left {
+  border-top-left-radius: 15px !important;
+  background-color: #3395ff !important;
+}
+
+#lesion-header-datos-right {
+  border-top-right-radius: 15px !important;
+  background-color: #3395ff !important;
+}
+/* Estilos de la tabla de usuarios, pacientes, terapias con las func ajax  */
+
+.form-inline{
+  padding-top: 1% !important;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+    font-size: 16px;
+    text-align: left;
+    white-space: nowrap;
+    height: 1.5rem !important;
+    width: 90% !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+  font-size: 16px;
+  text-align: left;
+  white-space: nowrap;
+  height: 1.5rem !important;
+  width: 300px !important;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: 2rem  !important;
+    width: 25% !important;
+    margin-bottom: 1% !important
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    font-size: 16px !important;
+    margin-left: 1rem !important;
+    margin-right: inherit !important;
+    display: inline-block;
+    width: 300px !important;
+    height: 1rem  !important;
+}
+
+
+
+tr.size-row.fila-tabla {
+    background-color: #fff !important;
+}
+
+/*----------------------------------------- Estilos del MODAL ----------------------------------------  */
+
+#confirmDeleteModal {
+  padding-right: inherit !important;
+  width: 35% !important;
+  height: 28% !important;
+  background-color: #fff !important;
+}
+
+
+#confirmDeleteModal2 {
+  padding-right: inherit !important;
+  width: 40% !important;
+  height: 40% !important;
+  background-color: #fff !important;
+}
+
+#confirmDeleteModal3 {
+  padding-right: inherit !important;
+  width: 40% !important;
+  height: 40% !important;
+  background-color: #fff !important;
+}
+
+#confirmDeleteModal4 {
+  padding-right: inherit !important;
+  width: 40% !important;
+  height: 40% !important;
+  background-color: #fff !important;
+}
+
+#confirmDeleteModal5 {
+  padding-right: inherit !important;
+  width: 40% !important;
+  height: 40% !important;
+  background-color: #fff !important;
+}
+
+#confirmFinishModal {
+  padding-right: inherit !important;
+  width: 40% !important;
+  height: 40% !important;
+  background-color: #fff !important;
+}
+/*
+.modal {
+  padding-right: inherit !important;
+  width: 40% !important;
+  height: 40% !important;
+  background-color: #fff !important;
+
+}
+*/
+.modal .modal-content {
+    margin: inherit !important;
+    padding: inherit !important;
+    border: none !important;
+}
+
+.btn-borrar-usuario {
+  color: #fff !important;
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+  margin: 1rem !important;
+}
+
+.modal-body {
+  text-align: center !important;
+}
+
+.form-control {
+    display: block !important;
+    width: 100% !important;
+    height: calc(2.25rem + 2px) !important;
+    padding: 0.375rem 0.75rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    color: #495057;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.25rem !important;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out !important;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out !important;
+    -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out !important;
+}
+
+/*----------------------------------------- GRÁFICAS ----------------------------------------------*/
+
+#grafica {
+  height: 300px !important;
+}
