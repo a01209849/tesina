@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Iniciar Sesión{% endblock %}
+{% block head %}
+{% endblock %}
+{% block body %}
+    <body>
+        <br>
+        <div class="row d-flex justify-content-sm-center">
+            <div class="col-s-12">
+              <h1>Pacientes</h1>
+            </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 d-flex justify-content-start">
+              <button class="btn btn-primary blue">
+              <a href="{% url 'pacientes:descargar_lesiones' %}" title="Descargar lesiones" style="color: #fff;">
+                Descargar Lesiones</a>
+              </button>
+            </div>
+          <div class="col-md-6 d-flex justify-content-end">
+            <a class="btn btn-floating blue modal-trigger" href="{% url 'pacientes:nuevo_paciente' %}" title="Agregar paciente">
+              <i class="material-icons">person_add</i></a>
+          </div>
+        </div>
+        </div>
+
+        <div class="container" id="container-pacientes">
+            <div class="table-responsive">
+            <table id="example" class="table table-bordered table-hover">
+              <thead class="thead-light">
+                <tr>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-user-circle fa-lg" aria-hidden="true"></span><br>Perfil</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-user fa-lg" aria-hidden="true"></span><br>Nombre</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-birthday-cake fa-lg" aria-hidden="true"></span><br>Nacimiento</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-hashtag fa-lg" aria-hidden="true"></span><br>Edad</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-phone fa-lg" aria-hidden="true"></span><br>Teléfono</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-envelope fa-lg" aria-hidden="true"></span><br>Email</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-user-md fa-lg" aria-hidden="true"></span><br>Editor</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-calendar-week fa-lg" aria-hidden="true"></span><br>Ingreso</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-calendar-day fa-lg" aria-hidden="true"></span><br>Modificado</th>
+                    <th style="text-align:center"><span class="fa fa-remove fa-lg" aria-hidden="true"></span><br>Eliminar</th>
+                </tr>
+                </thead>
+                {% for paciente in pacientes %}
+                  <tr class="size-row fila-tabla">
+                      <td id="td-perfil">
+                        <form action="{% url 'pacientes:perfil_paciente' paciente.id %}">
+                          <button class="btn btn-primary" type="submit" id="btn-perfil" title="Perfil del paciente">
+                            <span class="fa fa-id-card fa-2x" aria-hidden="true" id="span-perfil"></span>
+                          </button>
+                        </form>
+                      </td>
+                      <td style="text-align:center">{{ paciente.nombre }} {{ paciente.apellido_paterno }} {{ paciente.apellido_materno }}</td>
+                      <td style="text-align:center">{{ paciente.nacimiento }}</td>
+                      <td style="text-align:center">{{ paciente.edad }}</td>
+                      <td style="text-align:center">{{ paciente.telefono }}</td>
+                      <td style="text-align:center">{{ paciente.email }}</td>
+                      <td style="text-align:center">
+                        {% for user in usuarios %}
+                          {% if paciente.user == user.user %}
+                            {{ user.nombre }} {{ user.apellido_paterno}}
+                          {% endif %}
+                        {% endfor %}
+                      </td>
+                      <td style="text-align:center">{{ paciente.fecha_ingreso }}</td>
+                      <td style="text-align:center">{{ paciente.fecha_modificacion }}</td>
+                      <td style="text-align:center"><a href="{% url 'pacientes:borrar_paciente' paciente.id %}" class="confirm-delete-pacientes btn btn-floating btn-small red"
+                      title="Eliminar paciente" data-toggle="modal" data-target="#confirmDeleteModal" id="deleteButton{{ paciente.id }}" name="{{ paciente.nombre }} {{ paciente.apellido_paterno }}">
+                        <i class="material-icons">clear</i></a></td>
+                        {% include 'pacientes/confirma_borrarpaciente_modal.html' %}
+                  </tr>
+                {% endfor %}
+            </table>
+
+          </div>
+      </div>
+
+{% endblock %}
+
+{% block script %}
+{% load static %}
+<script src="{% static 'js/table2.js' %}"></script>
+<script src="{% static 'js/table3.js' %}"></script>
+<script src="{% static 'js/table4.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Cambiar Contraseña{% endblock %}
+{% block body %}
+    <body>
+        <div class="container">
+              <h1>Cambiar Contraseña</h1>
+        </div>
+        <br>
+        <form action="{% url 'usuarios:guardar_contrasena' user.id %}" method="post" >
+          {% csrf_token %}
+          <div class="container d-flex justify-content-sm-center">
+            <div class="form-row" id="form-row-plantilla">
+          {% for form in form_cambiar_contrasena %}
+              <div class="form-group col-md-6">
+                <label for="{{ form.id_for_label }}" id="label-font">{{ form.label }}</label>
+                {{ form }}
+              </div>
+          {% endfor %}
+            </div>
+          </div>
+          {{ form.as_p }}
+          <br>
+          <div class="row">
+            <div class="col"></div>
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+            <div class="col"></div>
+          </div>
+          </form>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base2.html' %}
+{% block title %}Iniciar Sesión{% endblock %}
+{% block body %}
+    <body>
+        <br>
+        <br>
+        <div class="row d-flex justify-content-sm-center">
+            <div class="col-s-12">
+              <h1>INICIAR SESIÓN</h1>
+            </div>
+        </div>
+        <br>
+            <form action="{% url 'login:user_login' %}" method="post" >
+              {% csrf_token %}
+              <div class="row">
+                <div class="col"></div>
+                <div class="col col-login">
+                  <br>
+                  {% for form in form_iniciar_sesion %}
+                  <label class="label-login" for="{{ form.id_for_label }}">{{ form.label }}</label>
+                  <div class="form-group d-flex justify-content-sm-center">
+                    {{ form }}
+                  </div>
+                  {% endfor %}
+                  <br>
+                  <div class="col text-center">
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                  </div>
+                  <br>
+                </div>
+                <div class="col"></div>
+              </div>
+              {{ form.as_p }}
+              </form>
+
+{% endblock %}

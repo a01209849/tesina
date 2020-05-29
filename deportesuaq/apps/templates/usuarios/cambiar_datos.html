@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Nuevo Usuario{% endblock %}
+
+{% block head %}
+{% load static %}
+
+{% endblock %}
+
+{% block body %}
+    <body>
+        <div class="container">
+              <h1>Datos del Usuario</h1>
+        </div>
+        <br>
+        <form action="{% url 'usuarios:guardar_cambio_datos' id_user %}" method="post" >
+          {% csrf_token %}
+          <div class="container d-flex justify-content-sm-center">
+            <div class="form-row" id="form-row-plantilla">
+          {% for form in form_cambiar_datos %}
+            {% if form.name == date_input %}
+              <div class="form-group date col-md-6">
+                <label for="{{ form.id_for_label }}" id="label-font">{{ form.label }}</label>
+                {{ form }}
+              </div>
+            {% else %}
+              <div class="form-group col-md-6">
+                <label for="{{ form.id_for_label }}" id="label-font">{{ form.label }}</label>
+                {{ form }}
+              </div>
+            {% endif %}
+          {% endfor %}
+            </div>
+          </div>
+          {{ form.as_p }}
+          <br>
+          <div class="row">
+            <div class="col"></div>
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            </div>
+            <div class="col"></div>
+          </div>
+          </form>
+
+{% endblock %}

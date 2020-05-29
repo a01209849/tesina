@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %}Iniciar Sesión{% endblock %}
+{% block head %}
+{% endblock %}
+{% block body %}
+    <body>
+        <br>
+        <div class="row d-flex justify-content-sm-center">
+            <div class="col-s-12">
+              <h1>Usuarios</h1>
+            </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+          <div class="col-md-12 d-flex justify-content-end">
+            <a class="btn btn-floating blue modal-trigger" href="{% url 'usuarios:nuevo_usuario' %}" title="Agregar usuario">
+              <i class="material-icons">person_add</i></a>
+          </div>
+        </div>
+        </div>
+
+        <div class="container" id="tabla-usuarios">
+            <div class="table-responsive">
+            <table id="example" class="table table-bordered table-hover">
+              <thead class="thead-light">
+                <tr>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-key" aria-hidden="true"></span><br>Usuario</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-id-card" aria-hidden="true"></span><br>Nombre</th>
+                    <th class="th-sm" style="text-align:center" id="tipo-usuario"><span class="fa fa-user-circle" aria-hidden="true"></span><br>Posición</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-envelope" aria-hidden="true"></span><br>Correo</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-birthday-cake" aria-hidden="true"></span><br>Nacimiento</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-hashtag" aria-hidden="true"></span><br>Edad</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-male" aria-hidden="true"></span><span class="fa fa-female" aria-hidden="true"></span><br>Sexo</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-phone" aria-hidden="true"></span><br>Teléfono</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-calendar-week" aria-hidden="true"></span><br>Ingreso</th>
+                    <th class="th-sm" style="text-align:center"><span class="fa fa-calendar-day" aria-hidden="true"></span><br>Modificado</th>
+                    <th style="text-align:center"><span class="fa fa-edit" aria-hidden="true"></span><br>Editar</th>
+                    <th style="text-align:center"><span class="fa fa-lock" aria-hidden="true"></span><br>Contraseña</th>
+                    <th style="text-align:center"><span class="fa fa-remove" aria-hidden="true"></span><br>Eliminar</th>
+                </tr>
+                </thead>
+                {% for user in usuarios %}
+                  {% for data in datos_usuarios %}
+
+                    {% if data.user == user %}
+                      <tr class="size-row fila-tabla">
+                          <td style="text-align:center">{{ user.username }}</td>
+                          <td style="text-align:center">{{ data.nombre }} {{ data.apellido_paterno }} {{ data.apellido_materno }}</td>
+                          {% if data.tipo_usuario == 'S' %}
+                            <td style="text-align:center">Supervisor</td>
+                          {% else %}
+                            <td style="text-align:center">Fisioterapeuta</td>
+                          {% endif %}
+                          <td style="text-align:center">{{ data.email }}</td>
+                          <td style="text-align:center">{{ data.nacimiento }}</td>
+                          <td style="text-align:center">{{ data.edad }}</td>
+                          {% if data.sexo == 'M' %}
+                            <td style="text-align:center">Masculino</td>
+                          {% else %}
+                            <td style="text-align:center">Femenino</td>
+                          {% endif %}
+                          <td style="text-align:center">{{ data.telefono }}</td>
+                          <td style="text-align:center">{{ data.fecha_ingreso }}</td>
+                          <td style="text-align:center">{{ data.fecha_modificacion }}</td>
+                          <td style="text-align:center"><a class="btn btn-floating btn-small blue modal-trigger"
+                            href="{% url 'usuarios:cambiar_datos' user.id %}" title="Editar usuario">
+                            <i class="material-icons">edit</i></a></td>
+                          <td style="text-align:center"><a class="btn btn-floating btn-small black modal-trigger"
+                            href="{% url 'usuarios:cambiar_contrasena' user.id %}" title="Cambiar contraseña del usuario">
+                            <i class="material-icons">lock</i></a></td>
+                          <td style="text-align:center"><a href="{% url 'usuarios:borrar_usuario' user.id %}" class="confirm-delete-users btn btn-floating btn-small red"
+                          title="Eliminar usuario" data-toggle="modal" data-target="#confirmDeleteModal" id="deleteButton{{ user.id }}" name="{{ data.nombre }} {{ data.apellido_paterno }}">
+                            <i class="material-icons">clear</i></a></td>
+                            {% include 'usuarios/confirma_borrarusuario_modal.html' %}
+
+                      </tr>
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+
+            </table>
+          </div>
+      </div>
+
+
+{% endblock %}
+
+{% block script %}
+{% load static %}
+<script src="{% static 'js/table2.js' %}"></script>
+<script src="{% static 'js/table3.js' %}"></script>
+<script src="{% static 'js/table4.js' %}"></script>
+{% endblock %}

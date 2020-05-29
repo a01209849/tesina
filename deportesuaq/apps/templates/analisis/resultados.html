@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% block title %}Análisis{% endblock %}
+{% load static %}
+
+{% block jquery %}
+
+{% endblock %}
+
+{% block body %}
+    <body>
+        <br>
+        <br>
+        <div class="row d-flex justify-content-sm-center">
+            <div class="col-s-12">
+              <h1>Prevención de lesiones</h1>
+            </div>
+        </div>
+
+        <div class="container" id="datos-perfil">
+          <div class="row">
+            <div class="col-12 d-flex justify-content-start">
+              <h3>Deportes</h3>
+              <br>
+            </div>
+
+            <!-- Contenido navegación por deportes -->
+            <ul class="nav nav-tabs col-12" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#FA" role="tab" aria-controls="home" aria-selected="true">Futból Americano</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#SV" role="tab" aria-controls="profile" aria-selected="false">Soccer Varonil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#SF" role="tab" aria-controls="contact" aria-selected="false">Soccer Femenil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#otros" role="tab" aria-controls="contact" aria-selected="false">...</a>
+              </li>
+            </ul>
+            <!-- Contenido por deporte -->
+            <div class="tab-content col-12" id="myTabContent">
+
+              <!-- Contenido dutból americano -->
+              <div class="tab-pane fade show active" id="FA" role="tabpanel" aria-labelledby="home-tab">
+                <br>
+                <h4>Resultados</h4>
+                <br>
+                <table id="example" class="table table-bordered table-hover">
+                  <thead class="thead-light">
+                    <tr>
+                        <th class="th-sm" style="text-align:center">Grupo</th>
+                        <th class="th-sm" style="text-align:center">Tamaño</th>
+                        <th class="th-sm" style="text-align:center">Superficie</th>
+                        <th class="th-sm" style="text-align:center">Temperatura ºC</th>
+                        <th class="th-sm" style="text-align:center">Parte del cuerpo</th>
+                        <th class="th-sm" style="text-align:center"># de jugadas antes de la lesión</th>
+                        <th class="th-sm" style="text-align:center">Tipo de jugada</th>
+                        <th class="th-sm" style="text-align:center">Posición</th>
+                    </tr>
+                  </thead>
+
+                  <tr>
+                    <td style="text-align:center">1</td>
+                    <td style="text-align:center">46.753 %</td>
+                    <td style="text-align:center">Natural (100 %)</td>
+                    <td style="text-align:center">19.63</td>
+                    <td style="text-align:center">Rodilla (50 %)</td>
+                    <td style="text-align:center">24.53</td>
+                    <td style="text-align:center">Pase (41.67 %)</td>
+                    <td style="text-align:center">LB (30.56 %)</td>
+                  </tr>
+
+                  <tr>
+                    <td style="text-align:center">2</td>
+                    <td style="text-align:center">53.247 %</td>
+                    <td style="text-align:center">Sintético (100 %)</td>
+                    <td style="text-align:center">17.38</td>
+                    <td style="text-align:center">Tobillo (51.22 %)</td>
+                    <td style="text-align:center">26.85</td>
+                    <td style="text-align:center">Pase (41.46 %)</td>
+                    <td style="text-align:center">DB (29.27 %)</td>
+                  </tr>
+
+                </table>
+                <br>
+                <div class="col-12 d-flex justify-content-start">
+                  <h4>Gráficas</h4>
+                </div>
+
+                <!-- Contenido navegación de grupos -->
+                <ul class="nav nav-tabs col-12" id="myTab2" role="tablist2">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="grupo1" data-toggle="tab" href="#G1" role="tab" aria-controls="grupo1" aria-selected="true">Grupo 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="grupo2" data-toggle="tab" href="#G2" role="tab" aria-controls="grupo2" aria-selected="false">Grupo 2</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="grupon" data-toggle="tab" href="#GN" role="tab" aria-controls="grupon" aria-selected="false">Grupo n</a>
+                  </li>
+                </ul>
+
+                <div class="tab-content col-12" id="myTabContent2">
+                  <!-- Contenido del grupo 1 -->
+                  <div class="tab-pane fade show active" id="G1" role="tabpanel" aria-labelledby="grupo1">
+                    <div class="col-sm-6">
+                      <canvas id="superficie"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                      <canvas id="lesion"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                      <canvas id="jugada"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                      <canvas id="posicion"></canvas>
+                    </div>
+                  </div>
+                  <!-- Contenido del grupo 2 -->
+                  <div class="tab-pane fade" id="G2" role="tabpanel" aria-labelledby="grupo2">
+                    <div class="col-sm-6">
+                      <canvas id="superficie2"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                      <canvas id="lesion2"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                      <canvas id="jugada2"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                      <canvas id="posicion2"></canvas>
+                    </div>
+                  </div>
+                  <!-- Contenido del grupo n -->
+                  <div class="tab-pane fade" id="GN" role="tabpanel" aria-labelledby="grupon">
+                    Gráficas grupo n
+                  </div>
+
+                </div>
+
+                <div class="list-group col-sm-6">
+                  <br>
+                  <li class="list-group-item">PI = Patada Inicial</li>
+                  <li class="list-group-item">PINR = Patada Inicial No Regresada</li>
+                  <li class="list-group-item">PIR = Patada Inicial Regresada</li>
+                  <li class="list-group-item">PD = Patada de Despeje</li>
+                  <li class="list-group-item">PDNR = Patada de Despeje No Regresada</li>
+                  <li class="list-group-item">PDR = Patada de Despeje Regresada</li>
+                </div>
+                <div class="list-group col-sm-6">
+                  <br>
+                  <ul>
+                    <li class="list-group-item">DB = Defensivo trasero (Defensive Back)</li>
+                    <li class="list-group-item">DL = Línea Defensiva (Defensive Line)</li>
+                    <li class="list-group-item">LB = Apoyador (Linebacker)</li>
+                    <li class="list-group-item">OL = Apoyador Externo (Outside Linebacker)</li>
+                    <li class="list-group-item">RB = Corredor (Running Back)</li>
+                    <li class="list-group-item">TE = Ala cerrada (Tight End)</li>
+                    <li class="list-group-item">WR = Ala abierta o Receptor abierto (Wide Receiver)</li>
+                  </ul>
+                </div>
+
+
+              </div>
+
+              <!-- Contenido Soccer Varonil -->
+              <div class="tab-pane fade" id="SV" role="tabpanel" aria-labelledby="profile-tab">
+                Resultados de Soccer Varonil...
+              </div>
+
+              <!-- Contenido Soccer Femenil -->
+              <div class="tab-pane fade" id="SF" role="tabpanel" aria-labelledby="contact-tab">
+                Resultados de Soccer Femenil...
+              </div>
+
+              <!-- Contenido otros deportes -->
+              <div class="tab-pane fade" id="otros" role="tabpanel" aria-labelledby="contact-tab">
+                Resultados de otros deportes...
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

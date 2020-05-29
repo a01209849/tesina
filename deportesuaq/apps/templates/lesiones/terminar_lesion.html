@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Nueva Lesión{% endblock %}
+
+{% block head %}
+{% load static %}
+
+{% endblock %}
+
+{% block body %}
+    <body>
+        <div class="container">
+              <h1>Finalizando Lesión</h1>
+        </div>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-start">
+              <a class="btn btn-floating btn-small blue modal-trigger" href="{% url 'lesiones:perfil_lesion' id_lesion %}"
+                style="margin-right: .5rem !important;" title="Regresar">
+                <i class="material-icons">undo</i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form action="{% url 'lesiones:guardar_terminar_lesion' id_lesion %}" method="post" >
+          {% csrf_token %}
+          <div class="container d-flex justify-content-sm-center">
+            <div class="form-row" id="form-row-plantilla">
+              {% for form in form_terminar_lesion %}
+                {% if form.name != "observaciones" %}
+                  <div class="form-group date col-md-4">
+                    <label for="{{ form.id_for_label }}" id="label-font">{{ form.label }}</label>
+                    {{ form }}
+                  </div>
+                {% else %}
+                  <div class="form-group date col-md-12">
+                    <label for="{{ form.id_for_label }}" id="label-font">{{ form.label }}</label>
+                    {{ form }}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {{ form.as_p }}
+          <br>
+          <div class="row">
+            <div class="col"></div>
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary">Finalizar</button>
+            </div>
+            <div class="col"></div>
+          </div>
+          </form>
+          
+{% endblock %}

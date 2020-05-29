@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Antecedentes del Paciente{% endblock %}
+
+{% block head %}
+{% load static %}
+
+{% endblock %}
+
+{% block body %}
+    <body>
+        <div class="container">
+              <h1>Antecedentes del Paciente</h1>
+        </div>
+        <br>
+
+        <form action="{% url 'pacientes:guardar_editar_antecedente' antecedente.id %}" method="post" >
+          {% csrf_token %}
+          <div class="container" id="container_antecedentes">
+            <div class="row">
+            {% for form in form_editar_antecedente %}
+
+              <div class="col" id="col-antecedentes">
+                <label for="{{ form.id_for_label }}" id="label-font">{{ form.label }}</label>
+                {{ form }}
+              </div>
+
+            {% endfor %}
+            </div>
+          </div>
+
+          <br>
+          <div class="row">
+            <div class="col"></div>
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+            <div class="col"></div>
+          </div>
+          </form>
+
+{% endblock %}

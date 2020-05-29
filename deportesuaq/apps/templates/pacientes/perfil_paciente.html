@@ -1,0 +1,403 @@
+{% extends 'base.html' %}
+{% block title %}Perfil de Paciente{% endblock %}
+{% block body %}
+    <body>
+        <br>
+        <br>
+        <div class="row d-flex justify-content-sm-center">
+            <div class="col-s-12">
+              <h2>{{ paciente.nombre }} {{ paciente.apellido_paterno }} {{ paciente.apellido_materno }}</h2>
+            </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 d-flex justify-content-start">
+              <a class="btn btn-floating btn-small blue modal-trigger" href="{% url 'pacientes:index' %}"
+               style="margin-right: .5rem !important;" title="Regresar">
+                <i class="material-icons">undo</i></a>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+              <a class="btn btn-floating btn-small blue modal-trigger" href="{% url 'pacientes:editar_paciente' paciente.id %}"
+               style="margin-right: .5rem !important;" title="Editar paciente">
+                <i class="material-icons">edit</i></a>
+              <a href="{% url 'pacientes:borrar_paciente' paciente.id %}" class="confirm-delete-pacientes btn btn-floating btn-small red"
+              title="Eliminar paciente" data-toggle="modal" data-target="#confirmDeleteModal" id="deleteButton{{ paciente.id }}" name="{{ paciente.nombre }} {{ paciente.apellido_paterno }}">
+                <i class="material-icons">clear</i></a>
+                {% include 'pacientes/confirma_borrarpaciente_modal.html' %}
+            </div>
+          </div>
+        </div>
+<!-- ------------------------------------------ DATOS PERSONALES --------------------------------------------  -->
+
+        <div class="container" id="datos-perfil">
+          <div class="row">
+              <div class="col-12">
+                <h4>Datos Personales</h4>
+              </div>
+              <div class="col">
+                <label for="Nacimiento" id="label-font">Nacimiento</label>
+                <p class="font-weight-light">{{ paciente.nacimiento }}</p>
+              </div>
+              <div class="col">
+                <label for="Edad" id="label-font">Edad</label>
+                <p class="font-weight-light">{{ paciente.edad }}</p>
+              </div>
+              <div class="col">
+                <label for="Sexo" id="label-font">Sexo</label>
+                <p class="font-weight-light">
+                  {% if paciente.sexo == "F" %}
+                    Femenino
+                  {% else %}
+                    Masculino
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                  <label for="Masa" id="label-font">Masa</label>
+                  <p class="font-weight-light">{{ paciente.masa }} kg (kilogramos)</p>
+                </div>
+                <div class="col">
+                  <label for="Talla" id="label-font">Talla</label>
+                  <p class="font-weight-light">{{ paciente.talla }} mts (metros)</p>
+                </div>
+                <div class="col">
+                  <label for="Escolaridad" id="label-font">Escolaridad</label>
+                  <p class="font-weight-light">{{ paciente.escolaridad }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                  <label for="Estado Civil" id="label-font">Estado Civil</label>
+                  <p class="font-weight-light">{{ paciente.estado_civil }}</p>
+                </div>
+                <div class="col">
+                  <label for="Ocupación" id="label-font">Ocupación</label>
+                  <p class="font-weight-light">{{ paciente.ocupacion }}</p>
+                </div>
+                <div class="col">
+                  <label for="Domicilio" id="label-font">Domicilio</label>
+                  <p class="font-weight-light">{{ paciente.domicilio }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                  <label for="Teléfono" id="label-font">Teléfono</label>
+                  <p class="font-weight-light">{{ paciente.telefono }}</p>
+                </div>
+                <div class="col">
+                  <label for="Email" id="label-font">Email</label>
+                  <p class="font-weight-light">{{ paciente.email }}</p>
+                </div>
+                <div class="col">
+                  <label for="Editor" id="label-font">Editor</label>
+                  <p class="font-weight-light">{{ usuario.nombre }} {{ usuario.apellido_paterno }} {{ usuario.apellido_materno }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-4">
+                <label for="Facultad" id="label-font">Facultad</label>
+                {% if paciente.facultad == "FE" %}<p class="font-weight-light">Enfermería</p>
+                {% elif paciente.facultad == "FCA" %}<p class="font-weight-light">Contaduría y Administración</p>
+                {% elif paciente.facultad == "FD" %}<p class="font-weight-light">Derecho</p>
+                {% elif paciente.facultad == "I" %}<p class="font-weight-light">Informática</p>
+                {% elif paciente.facultad == "FCN" %}<p class="font-weight-light">Ciencias Naturales</p>
+                {% elif paciente.facultad == "FLL" %}<p class="font-weight-light">Lenguas y Letras</p>
+                {% elif paciente.facultad == "FP" %}<p class="font-weight-light">Psicología</p>
+                {% elif paciente.facultad == "FCPS" %}<p class="font-weight-light">Ciencias Políticas y Sociales</p>
+                {% elif paciente.facultad == "ING" %}<p class="font-weight-light">Ingeniería</p>
+                {% elif paciente.facultad == "FQ" %}<p class="font-weight-light">Química</p>
+                {% elif paciente.facultad == "FM" %}<p class="font-weight-light">Medicina</p>
+                {% elif paciente.facultad == "FBA" %}<p class="font-weight-light">Bellas Artes</p>
+                {% elif paciente.facultad == "FF" %}<p class="font-weight-light">Filosofía</p>
+                {% elif paciente.facultad == "EB" %}<p class="font-weight-light">Escuela de Bachilleres</p>
+                {% elif paciente.facultad == "N" %}<p class="font-weight-light">Ninguna</p>
+                {% endif %}
+              </div>
+              <div class="col-4">
+                <label for="Deporte" id="label-font">Deporte</label>
+                {% if paciente.deporte == "TM" %}<p class="font-weight-light">Tenis de Mesa</p>
+                {% elif paciente.deporte == "TKD" %}<p class="font-weight-light">Tae Kwon Do</p>
+                {% elif paciente.deporte == "FRF" %}<p class="font-weight-light">Fútbol Rápido Femenil</p>
+                {% elif paciente.deporte == "FRV" %}<p class="font-weight-light">Fútbol Rápido Varonil</p>
+                {% elif paciente.deporte == "BX" %}<p class="font-weight-light">Boxeo</p>
+                {% elif paciente.deporte == "L" %}<p class="font-weight-light">Lucha</p>
+                {% elif paciente.deporte == "A" %}<p class="font-weight-light">Atletismo</p>
+                {% elif paciente.deporte == "B" %}<p class="font-weight-light">Beisbol</p>
+                {% elif paciente.deporte == "TA" %}<p class="font-weight-light">Tiro con Arco</p>
+                {% elif paciente.deporte == "VF" %}<p class="font-weight-light">Voleibol Femenil</p>
+                {% elif paciente.deporte == "VV" %}<p class="font-weight-light">Voleibol Varonil</p>
+                {% elif paciente.deporte == "HF" %}<p class="font-weight-light">Handball Femenil</p>
+                {% elif paciente.deporte == "HV" %}<p class="font-weight-light">Handball Varonil</p>
+                {% elif paciente.deporte == "SF" %}<p class="font-weight-light">Soccer Femenil</p>
+                {% elif paciente.deporte == "SV" %}<p class="font-weight-light">Soccer Varonil</p>
+                {% elif paciente.deporte == "BF" %}<p class="font-weight-light">Basquetbol Femenil</p>
+                {% elif paciente.deporte == "BV" %}<p class="font-weight-light">Basquetbol Varonil</p>
+                {% elif paciente.deporte == "AZ" %}<p class="font-weight-light">Ajedrez</p>
+                {% elif paciente.deporte == "K" %}<p class="font-weight-light">Karate</p>
+                {% elif paciente.deporte == "J" %}<p class="font-weight-light">Judo</p>
+                {% elif paciente.deporte == "LP" %}<p class="font-weight-light">Levantamiento de Pesas</p>
+                {% elif paciente.deporte == "T" %}<p class="font-weight-light">Tochito</p>
+                {% elif paciente.deporte == "FA" %}<p class="font-weight-light">Fútbol Americano</p>
+                {% elif paciente.deporte == "E" %}<p class="font-weight-light">Esgrima</p>
+                {% elif paciente.deporte == "S" %}<p class="font-weight-light">Softball</p>
+                {% elif paciente.deporte == "N" %}<p class="font-weight-light">Ninguna</p>
+                {% endif %}
+              </div>
+                <div class="col-4">
+                  <label for="Fecha de Ingreso" id="label-font">Fecha de Ingreso</label>
+                  <p class="font-weight-light">{{ paciente.fecha_ingreso }}</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                  <label for="Fecha de Modificación" id="label-font">Fecha de Modificación</label>
+                  <p class="font-weight-light">{{ paciente.fecha_modificacion }}</p>
+                </div>
+            </div>
+        </div>
+        <br>
+<!-- ------------------------------------------ ANTECEDENTES --------------------------------------------  -->
+
+        <div class="row d-flex justify-content-sm-center">
+          <div class="col-s-12">
+            <h2>Antecedentes</h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-end">
+              <a class="btn btn-floating btn-small blue modal-trigger"
+              href="{% url 'pacientes:antecedentes_paciente' paciente.id %}" title="Agregar antecedente">
+                <span class="fa fa-plus fa-lg" aria-hidden="true" ></span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="container" id="datos-perfil">
+          <div class="row">
+              <div class="col-12">
+                <h4>Heredofamilidares</h4>
+              </div>
+          </div>
+
+          <div class="col-12 d-flex justify-content-sm-center">
+          {% if not hfs %}
+            <p class="text-muted">No hay antecedentes</p>
+          {% else %}
+          <table id="example" class="table table-bordered table-hover">
+            <thead class="thead-light">
+              <tr>
+                  <th class="th-sm" style="text-align:center">Nombre</th>
+                  <th class="th-sm" style="text-align:center">Descripción</th>
+                  <th class="th-sm" style="text-align:center">Editar</th>
+                  <th class="th-sm" style="text-align:center">Eliminar</th>
+              </tr>
+            </thead>
+
+           {% for antecedente in hfs %}
+            <tr>
+              <td id="td-estandar">{{ antecedente.nombre }}</td>
+              <td style="text-align:center">{{ antecedente.descripcion }}</td>
+              <td id="td-action"><a class="btn btn-floating btn-small blue modal-trigger"
+                href="{% url 'pacientes:editar_antecedente' antecedente.id %}" title="Editar antecedente">
+                <i class="material-icons">edit</i></a>
+              </td>
+              <td id="td-action"><a href="{% url 'pacientes:borrar_antecedente' antecedente.id %}" class="confirm-delete-antecedentes-hf btn btn-floating btn-small red"
+                  title="Eliminar antecedente" data-toggle="modal" data-target="#confirmDeleteModal2" id="deleteButton{{ antecedente.id }}"
+                  name="NOMBRE: {{ antecedente.nombre }} TIPO: Heredofamiliares DESCRIPCIÓN: {{ antecedente.descripcion }}">
+                <i class="material-icons">clear</i></a>
+              </td>
+                {% include 'pacientes/confirma_borrarantecedente1_modal.html' %}
+            </tr>
+            {% endfor %}
+          </table>
+          {% endif %}
+          </div>
+
+          <div class="row">
+              <div class="col-12">
+                <h4>Personales Patológicos</h4>
+              </div>
+          </div>
+
+          <div class="col-12 d-flex justify-content-sm-center">
+          {% if not pps %}
+            <p class="text-muted">No hay antecedentes</p>
+          {% else %}
+          <table id="example" class="table table-bordered table-hover">
+            <thead class="thead-light">
+              <tr>
+                  <th class="th-sm" style="text-align:center">Nombre</th>
+                  <th class="th-sm" style="text-align:center">Descripción</th>
+                  <th class="th-sm" style="text-align:center">Editar</th>
+                  <th class="th-sm" style="text-align:center">Eliminar</th>
+              </tr>
+            </thead>
+
+           {% for antecedente in pps %}
+            <tr>
+              <td id="td-estandar">{{ antecedente.nombre }}</td>
+              <td style="text-align:center">{{ antecedente.descripcion }}</td>
+              <td id="td-action"><a class="btn btn-floating btn-small blue modal-trigger"
+                href="{% url 'pacientes:editar_antecedente' antecedente.id %}" title="Editar antecedente">
+                <i class="material-icons">edit</i></a>
+              </td>
+              <td id="td-action"><a href="{% url 'pacientes:borrar_antecedente' antecedente.id %}" class="confirm-delete-antecedentes-pp btn btn-floating btn-small red"
+                  title="Eliminar antecedente" data-toggle="modal" data-target="#confirmDeleteModal3" id="deleteButton{{ antecedente.id }}"
+                  name="NOMBRE: {{ antecedente.nombre }} TIPO: Personales Patológicos DESCRIPCIÓN: {{ antecedente.descripcion }}">
+                <i class="material-icons">clear</i></a>
+              </td>
+                {% include 'pacientes/confirma_borrarantecedente2_modal.html' %}
+            </tr>
+            {% endfor %}
+          </table>
+          {% endif %}
+          </div>
+
+          <div class="row">
+              <div class="col-12">
+                <h4>Personales No Patológicos</h4>
+              </div>
+          </div>
+
+          <div class="col-12 d-flex justify-content-sm-center">
+          {% if not nps %}
+            <p class="text-muted">No hay antecedentes</p>
+          {% else %}
+          <table id="example" class="table table-bordered table-hover">
+            <thead class="thead-light">
+              <tr>
+                  <th class="th-sm" style="text-align:center">Nombre</th>
+                  <th class="th-sm" style="text-align:center">Descripción</th>
+                  <th class="th-sm" style="text-align:center">Editar</th>
+                  <th class="th-sm" style="text-align:center">Eliminar</th>
+              </tr>
+            </thead>
+
+           {% for antecedente in nps %}
+            <tr>
+              <td id="td-estandar">{{ antecedente.nombre }}</td>
+              <td style="text-align:center">{{ antecedente.descripcion }}</td>
+              <td id="td-action"><a class="btn btn-floating btn-small blue modal-trigger"
+                href="{% url 'pacientes:editar_antecedente' antecedente.id %}" title="Editar antecedente">
+                <i class="material-icons">edit</i></a>
+              </td>
+              <td id="td-action"><a href="{% url 'pacientes:borrar_antecedente' antecedente.id %}" class="confirm-delete-antecedentes-pnp btn btn-floating btn-small red"
+                  title="Eliminar antecedente" data-toggle="modal" data-target="#confirmDeleteModal4" id="deleteButton{{ antecedente.id }}"
+                  name="NOMBRE: {{ antecedente.nombre }} TIPO: Personales No Patológicos DESCRIPCIÓN: {{ antecedente.descripcion }}">
+                <i class="material-icons">clear</i></a>
+              </td>
+                {% include 'pacientes/confirma_borrarantecedente3_modal.html' %}
+            </tr>
+            {% endfor %}
+          </table>
+          {% endif %}
+          </div>
+          <br>
+        </div>
+        <br>
+
+<!-- ------------------------------------------ LESIONES --------------------------------------------  -->
+
+    <div class="row d-flex justify-content-sm-center">
+      <div class="col-s-12">
+        <h2>Lesiones</h2>
+      </div>
+    </div>
+    <br>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-end">
+          <a class="btn btn-floating btn-small blue modal-trigger" href="{% url 'lesiones:crear_lesion' paciente.id %}"
+            title="Agregar lesión">
+            <span class="fa fa-plus fa-lg" aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="datos-perfil">
+      <div class="row">
+        <div class="col-12">
+
+        </div>
+        <div class="col-12 d-flex justify-content-sm-center">
+          {% if not lesiones %}
+            <p class="text-muted">No hay lesiones</p>
+          {% else %}
+          <table id="example" class="table table-bordered table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th class="th-sm" style="text-align:center">Diagnóstico</th>
+                <th class="th-sm" style="text-align:center">Lesion</th>
+                <th class="th-sm" style="text-align:center">Fisioterapeuta</th>
+                <th class="th-sm" style="text-align:center">Valoración</th>
+                <th class="th-sm" style="text-align:center">Estatus</th>
+                <th class="th-sm" style="text-align:center">Terminar</th>
+                <th class="th-sm" style="text-align:center">Editar</th>
+                <th class="th-sm" style="text-align:center">Eliminar</th>
+              </tr>
+            </thead>
+
+          {% for lesion in lesiones %}
+           <tr>
+             <td id="td-perfil">
+               <form action="{% url 'lesiones:perfil_lesion' lesion.id %}">
+                 <button class="btn btn-primary" type="submit" id="btn-perfil" title="Información de la lesión">
+                   <span class="fa fa-file-text fa-2x" aria-hidden="true" id="span-perfil"></span>
+                 </button>
+               </form>
+             </td>
+            <td style="text-align:center">{{ lesion.lesion }} {{ lesion.zona }}</td>
+            <td style="text-align:center">
+              {% for fisio in fisioterapeutas %}
+                {% if lesion.fisioterapeuta == fisio.id %}
+                  {{ fisio.nombre }} {{ fisio.apellido_paterno }} {{ fisio.apellido_materno }}
+                {% endif %}
+              {% endfor %}
+            </td>
+            <td style="text-align:center">{{ lesion.fecha_valoracion }}</td>
+            <td style="text-align:center">{% if lesion.estatus == True %} Activa {% else %} Terminada {% endif %}</td>
+            {% if lesion.estatus == True %}
+              <td id="td-action"><a class="btn btn-floating btn-small blue modal-trigger" title="Terminar lesión"
+                href="{% url 'lesiones:terminar_lesion' lesion.id %}">
+                <i class="material-icons">check_circle</i></a>
+              </td>
+            {% else %}
+              <td style="text-align:center">No disponible</td>
+            {% endif %}
+            {% if lesion.estatus == True %}
+              <td id="td-action"><a class="btn btn-floating btn-small blue modal-trigger" title="Editar lesión"
+                href="{% url 'lesiones:editar_lesion' lesion.id %}">
+                <i class="material-icons">edit</i></a>
+              </td>
+            {% else %}
+              <td style="text-align:center">No disponible</td>
+            {% endif %}
+            <td id="td-action"><a href="{% url 'lesiones:borrar_lesion' lesion.id %}" class="confirm-delete-lesion btn btn-floating btn-small red"
+                title="Eliminar lesión" data-toggle="modal" data-target="#confirmDeleteModal5" id="deleteButton{{ lesion.id }}"
+                name="{{ paciente.nombre }} {{ paciente.apellido_paterno }}?  LESIÓN: {{ lesion.lesion }} de {{ lesion.zona }}">
+              <i class="material-icons">clear</i></a>
+            </td>
+              {% include 'lesiones/confirma_borrarlesion_modal.html' %}
+           </tr>
+          {% endfor %}
+        </table>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

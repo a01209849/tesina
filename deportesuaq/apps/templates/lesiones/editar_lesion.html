@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Nueva Lesión{% endblock %}
+
+{% block head %}
+{% load static %}
+
+{% endblock %}
+
+{% block body %}
+    <body>
+        <div class="container">
+              <h1>Valoración</h1>
+        </div>
+        <br>
+        <form action="{% url 'lesiones:guardar_editar_lesion' id_lesion %}" method="post" >
+          {% csrf_token %}
+          <div class="container d-flex justify-content-sm-center">
+            <div class="form-row" id="form-row-plantilla">
+              <div class="form-group date col-md-4">
+                <label for="Fisioterapeuta" id="label-font">Fisioterapeuta</label>
+                <select name="fisioterapeuta" class="form-control" id="choice">
+                    <option disabled value>Elige un usuario...</option>
+                    {% for user in usuarios %}
+                      {% if lesion.fisioterapeuta == user.id %}
+                        <option selected value="{{ user.id }}">{{ user.nombre }} {{ user.apellido_paterno }} {{ user.apellido_materno }}</option>
+                      {% else %}
+                        <option value="{{ user.id }}">{{ user.nombre }} {{ user.apellido_paterno }} {{ user.apellido_materno }}</option>
+                      {% endif %}
+                    {% endfor %}
+                </select>
+              </div>
+          {% for form in form_crear_lesion %}
+            {% if form.name == "zona" or form.name == "lesion" %}
+              <div class="form-group date col-md-4">
+                <label for="{{ form.id_for_label }}" id="label-font">{{ form.label }}</label>
+                {{ form }}
+              </div>
+            {% else %}
+              <div class="form-group date col-md-12">
+                <label for="{{ form.id_for_label }}" id="label-font">{{ form.label }}</label>
+                {{ form }}
+              </div>
+            {% endif %}
+          {% endfor %}
+            </div>
+          </div>
+          {{ form.as_p }}
+          <br>
+          <div class="row">
+            <div class="col"></div>
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+            <div class="col"></div>
+          </div>
+          </form>
+
+{% endblock %}

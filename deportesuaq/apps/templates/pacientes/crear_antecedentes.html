@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Antecedentes del Paciente{% endblock %}
+
+{% block head %}
+{% load static %}
+
+{% endblock %}
+
+{% block body %}
+    <body>
+        <div class="container">
+              <h1>Antecedentes del Paciente</h1>
+        </div>
+        <div class="container d-flex justify-content-end">
+          <button class="btn btn-primary" onclick="agrega_antecedentes()" id="button-antecedentes" title="Agregar antecedentes">
+            <span class="fa fa-plus" aria-hidden="true"></span></button>
+          <button class="btn btn-primary"  onclick="quitar_antecedentes()" id="button-antecedentes" title="Quitar antecedentes">
+            <span class="fa fa-minus" aria-hidden="true"></span></button>
+        </div>
+        <form action="{% url 'pacientes:guardar_antecedentes' id_paciente%}" method="post" >
+          {% csrf_token %}
+          <div class="container" id="container_antecedentes">
+
+              {% include 'pacientes/antecedentes_formato.html' %}
+
+          </div>
+
+          <br>
+          <div class="row">
+            <div class="col"></div>
+            <div class="col text-center">
+              <button type="submit" class="btn btn-primary">Crear y Guardar</button>
+            </div>
+            <div class="col"></div>
+          </div>
+          </form>
+
+{% endblock %}
